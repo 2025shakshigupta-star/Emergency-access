@@ -373,14 +373,14 @@ const Translator = ({ onClose, onConfirm, initialText = "" }: { onClose: () => v
 };
 
 const Header = ({ onBack, title }: { onBack?: () => void, title?: string }) => (
-  <header className="flex items-center justify-between p-6 bg-white border-b border-slate-100 z-50">
+  <header className="flex items-center justify-between py-3 px-5 bg-white border-b border-slate-100 z-50">
     <div className="flex items-center gap-3">
-      <div className="w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center shadow-lg shadow-red-100">
-        <ShieldAlert className="w-6 h-6 text-white" />
+      <div className="w-8 h-8 bg-red-600 rounded-lg flex items-center justify-center shadow-lg shadow-red-100">
+        <ShieldAlert className="w-4 h-4 text-white" />
       </div>
       <div>
-        <h1 className="text-sm font-black tracking-tight text-slate-900 uppercase leading-none mb-1">Emergency</h1>
-        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{title || "STANDBY"}</p>
+        <h1 className="text-xs font-black tracking-tight text-slate-900 uppercase leading-none mb-0.5">Emergency</h1>
+        <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-none">{title || "STANDBY"}</p>
       </div>
     </div>
     <button className="p-2 hover:bg-slate-50 rounded-full transition-colors relative text-slate-400 hover:text-slate-900">
@@ -643,13 +643,7 @@ const VolunteerSOP = ({ type, onClose }: { type: EmergencyType, onClose: () => v
         </div>
       </div>
 
-      <div className="p-5 bg-orange-50 rounded-3xl border border-orange-100">
-        <div className="flex items-center gap-2 mb-2">
-            <Shield className="w-4 h-4 text-orange-500" />
-            <p className="text-[10px] font-black text-orange-500 uppercase tracking-widest">Force Safety</p>
-        </div>
-        <p className="text-[10px] text-slate-500 italic leading-snug uppercase font-medium">Do not exceed training levels. profesional extraction units are in-bound to your current grid.</p>
-      </div>
+
 
       <button 
         onClick={onClose}
@@ -1731,18 +1725,18 @@ export default function App() {
             <motion.div 
               initial={{ y: 300 }}
               animate={{ y: 0 }}
-              className="bg-white rounded-t-[3.5rem] p-8 shadow-[0_-20px_50px_-12px_rgba(0,0,0,0.05)] z-50 border-t border-slate-50"
+              className="bg-white rounded-t-[2.5rem] p-6 shadow-[0_-20px_50px_-12px_rgba(0,0,0,0.05)] z-50 border-t border-slate-50"
             >
-              <div className="w-12 h-1.5 bg-slate-100 rounded-full mx-auto mb-8" />
+              <div className="w-12 h-1 bg-slate-100 rounded-full mx-auto mb-5" />
               
-              <div className="flex items-center justify-between mb-6">
-                <p className="text-[11px] font-black text-slate-400 uppercase tracking-[0.3em]">Nearby Responders</p>
-                <div className="px-3 py-1 bg-green-50 border border-green-100 text-green-600 text-[9px] font-black rounded-lg uppercase tracking-widest leading-none">
+              <div className="flex items-center justify-between mb-4">
+                <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Nearby Responders</p>
+                <div className="px-2 py-0.5 bg-green-50 border border-green-100 text-green-600 text-[8px] font-black rounded-md uppercase tracking-widest leading-none">
                   Secure Link
                 </div>
               </div>
 
-              <div className="space-y-4 mb-8 max-h-[25vh] overflow-y-auto pr-2 custom-scrollbar">
+              <div className="space-y-3 mb-5 max-h-[20vh] overflow-y-auto pr-2 custom-scrollbar">
                 {responders.length === 0 ? (
                   <div className="py-12 text-center">
                     <div className="inline-flex items-center gap-3 px-6 py-3 bg-slate-50 border border-slate-100 rounded-2xl">
@@ -1757,7 +1751,7 @@ export default function App() {
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       key={`list-item-${responder.id}`} 
-                      className={`p-4 border rounded-3xl flex items-center gap-4 transition-all group ${
+                      className={`p-3 border rounded-2xl flex items-center gap-3 transition-all group ${
                         selectedResponderId === responder.id 
                         ? 'bg-blue-50 border-blue-200 ring-4 ring-blue-500/5 shadow-lg scale-[1.02]' 
                         : 'bg-slate-50 border-slate-100 hover:shadow-md'
@@ -1766,8 +1760,8 @@ export default function App() {
                     >
                       <UserAvatar name={responder.name} type={responder.type} />
                       <div className="flex-1 min-w-0">
-                        <span className="font-black text-sm block text-slate-900 italic uppercase truncate transition-colors group-hover:text-blue-600">{responder.name}</span>
-                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{responder.distance} • {responder.id === '1' ? 'Floor 04' : responder.id === '2' ? 'West Wing' : 'Main Lobby'}</p>
+                        <span className="font-black text-xs block text-slate-900 italic uppercase truncate transition-colors group-hover:text-blue-600">{responder.name}</span>
+                        <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{responder.distance} • {responder.id === '1' ? 'Floor 04' : responder.id === '2' ? 'West Wing' : 'Main Lobby'}</p>
                       </div>
                       <button 
                         onClick={() => {
@@ -1775,19 +1769,19 @@ export default function App() {
                           setShowNotification(true);
                           setTimeout(() => setShowNotification(false), 3000);
                         }}
-                        className="w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl flex items-center justify-center shadow-lg shadow-blue-100 active:scale-95 transition-all"
+                        className="w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white rounded-xl flex items-center justify-center shadow-lg shadow-blue-100 active:scale-95 transition-all"
                       >
-                        <Send className="w-5 h-5" />
+                        <Send className="w-4 h-4" />
                       </button>
                     </motion.div>
                   ))
                 )}
               </div>
 
-              <div className="grid grid-cols-2 gap-3 mt-2">
+              <div className="grid grid-cols-2 gap-2 mt-1">
                 <button 
                   onClick={handleBack}
-                  className="p-3 bg-slate-50 hover:bg-red-50 hover:text-red-500 transition-all text-slate-400 rounded-2xl text-[9px] font-black uppercase tracking-widest border border-slate-100"
+                  className="p-2.5 bg-slate-50 hover:bg-red-50 hover:text-red-500 transition-all text-slate-400 rounded-xl text-[8px] font-black uppercase tracking-widest border border-slate-100"
                 >
                   Cancel Signal
                 </button>
@@ -1801,17 +1795,17 @@ export default function App() {
                         setActiveChat(activeEmergency === 'MEDICAL' ? 'Doctor' : 'Police');
                       }
                     }}
-                    className="p-3 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center gap-2 hover:bg-blue-100 transition-all active:scale-95 shadow-sm border border-blue-100"
+                    className="p-2.5 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center gap-2 hover:bg-blue-100 transition-all active:scale-95 shadow-sm border border-blue-100"
                   >
-                    <MessageCircle className="w-4 h-4" />
-                    <span className="text-[9px] font-black uppercase tracking-widest">Chat</span>
+                    <MessageCircle className="w-3.5 h-3.5" />
+                    <span className="text-[8px] font-black uppercase tracking-widest">Chat</span>
                   </button>
                   <button 
                     onClick={() => setShowSOP(true)}
-                    className="p-3 bg-orange-50 text-orange-600 rounded-2xl flex items-center justify-center gap-2 hover:bg-orange-100 transition-all active:scale-95 shadow-sm border border-orange-100"
+                    className="p-2.5 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center gap-2 hover:bg-orange-100 transition-all active:scale-95 shadow-sm border border-orange-100"
                   >
-                    <BookOpen className="w-4 h-4" />
-                    <span className="text-[9px] font-black uppercase tracking-widest">Guide</span>
+                    <BookOpen className="w-3.5 h-3.5" />
+                    <span className="text-[8px] font-black uppercase tracking-widest">Guide</span>
                   </button>
                 </div>
               </div>
